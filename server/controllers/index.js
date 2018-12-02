@@ -45,12 +45,13 @@ module.exports = {
 		}
 	},
 	logIn: (req, res) => {
+		console.log(req.user)
 		try{
 
 			//exchange user dtails with a token
-			const user = req.body
+			const user = req
 			const tokenGen = token(user);
-			return res.json({ tokenGen, user })
+			return res.json({ tokenGen })
 
 		}catch(error){
 			return res.json({ error })

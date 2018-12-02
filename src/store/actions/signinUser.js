@@ -4,6 +4,7 @@ const signinUser = (userData) => {
 	return async (dispatch, getState) => {
 		try{
 			let loginUserData = await axios.post('/login', userData)
+			console.log(loginUserData.data)
 			let { tokenGen }  = loginUserData.data
 
 			localStorage.setItem('jwt', tokenGen)

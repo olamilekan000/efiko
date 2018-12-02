@@ -6,7 +6,7 @@ router.route('/signup')
 	.post(controllers.signUp);
 
 router.route('/login')
-	.post(controllers.logIn);
+	.post(passport.authenticate('local', { session: false }),controllers.logIn);
 
 router.route('/dashboard')
 	.get(passport.authenticate('jwt', { session: false }), controllers.dashboard);

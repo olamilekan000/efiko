@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import signupUser from '../store/actions/signupUser'
+import { Redirect } from 'react-router-dom'
+import getJwt from '../helpers/index'
 
 class SignUp extends Component{
 	state ={
 		email: '',
-		password: ''
+		password: '',
+		jwt: getJwt()
 	}
 
 	handleChange = e => {
@@ -27,7 +30,9 @@ class SignUp extends Component{
 	}
 
 	render(){
-		console.log(this.props)
+		console.log(this.state.jwt)
+		if(this.state.jwt) { return <Redirect to='/' /> }
+
 		return (
 			<div>
 				<div className="container">

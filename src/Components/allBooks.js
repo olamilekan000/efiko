@@ -13,9 +13,6 @@ class AllBooks extends Component{
 	async componentDidMount(){	
 
 		let response = await axios.get('https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/new');
-
-		console.log(response)
-
 		this.setState({
 			books: response.data.books
 		})
@@ -29,8 +26,6 @@ class AllBooks extends Component{
 	}
 
 	render(){
-
-		console.log(this.state.books)
 
 		let books
 
