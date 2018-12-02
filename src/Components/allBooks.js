@@ -36,11 +36,11 @@ class AllBooks extends Component{
 
 		if(this.state.books === ""){
 
-			books = <div className="center"> <h3> Fetching all books... </h3> </div>
+			books = <div className="center"> <h3> Fetching all books... 📚 </h3> </div>
 
 		}else if(this.state.books.length === 0){
 
-			books = (<div className="center" style={{ marginTop: '100px' }}> <h3> Oops looks like that book doesn't exist... </h3> </div>)
+			books = (<div className="center" style={{ marginTop: '100px' }}> <h3> Oops looks like that book doesn't exist... 😞</h3> </div>)
 
 		}else{
 

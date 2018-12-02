@@ -32,7 +32,7 @@ class SingleBook extends Component {
 
 		if(this.state.aboutBook === ''){
 			return(
-				<div className="center"> <h3> Fetching book... </h3> </div>
+				<div className="center"> <h3> Fetching book... 📚</h3> </div>
 			)
 		}
 
