@@ -13,7 +13,7 @@ class Navbar extends Component {
 			  <nav>
 			    <div className="nav-wrapper">
 			    	<div className="container">
-				      <Link to="/" className="brand-logo center">Efiko</Link>
+				      <Link to="/" className="brand-logo center">Efiko - Where all IT books live.</Link>
 				      <ul>
 				      	{ getJwt() ? <SignInLink /> : <SignOutLink /> }
 				      </ul>
