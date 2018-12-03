@@ -15,11 +15,11 @@ class App extends Component {
           <div>
             <Navbar />
             <Switch>
+              <Route exact path='/' component={ AllBooks } />
               <Route path='/SignIn' component={ SignIn } />
               <Route path='/SignUp' component={ SignUp } />
-              <Route exact path='/' component={ AllBooks } />
               <Route path='/:id' component={ SingleBook } />
-              <Route path='/Dashboard' component = { Dashboard } />
+              <Route path='/dashboard' component = { Dashboard } />
             </Switch>            
           </div>
         </BrowserRouter>

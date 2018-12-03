@@ -6,7 +6,7 @@ const SignInLink = () => {
 
 	return(
 		<div>
-			<li><Link to='/Dashboard'>Dashboard</Link></li>
+			<li><Link to='/dashboard'>Dashboard</Link></li>
 			<li> <a onClick={ () => refresh() } >Sign-Out</a> </li>			
 		</div>
 	)
