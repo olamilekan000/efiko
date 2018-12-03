@@ -22,14 +22,6 @@ class SignIn extends Component{
 
 		this.props.SignInUser(this.state)
 		this.props.getToken(this.props.SignInData)
-
-		// if(this.props.token){ 
-			// window.location.reload()
-			// this.props.history.push('/')
-		//  }
-
-		 console.log(this.props.token)
-		// this.props.SignInData !== this.state.jwt ? this.props.history.push('/') : null
 	}
 
 	render(){

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import Book from './Book'
 
@@ -12,10 +14,12 @@ class AllBooks extends Component{
 
 	async componentDidMount(){	
 
-		let response = await axios.get('https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/new');
-		this.setState({
-			books: response.data.books
-		})
+		if(this.props.token){
+			let response = await axios.get('https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/new');
+			this.setState({
+				books: response.data.books
+			})
+		}
 
 	}
 
@@ -26,6 +30,8 @@ class AllBooks extends Component{
 	}
 
 	render(){
+
+		if(!this.props.token) { return <Redirect to='/SignIn' /> }
 
 		let books
 
@@ -60,4 +66,10 @@ class AllBooks extends Component{
 	}
 }
 
-export default AllBooks
+const mapStateToProps = (state) => {
+	return {
+		token: state.jwt.jwtToken
+	}
+}
+
+export default connect(mapStateToProps)(AllBooks)
