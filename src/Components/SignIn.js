@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 import signinUser from '../store/actions/signinUser'
 import getJwtToken from '../store/actions/jwtToken'
-import getJwt from '../helpers/index'
 
 class SignIn extends Component{
 	state ={

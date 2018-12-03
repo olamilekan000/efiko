@@ -10,7 +10,7 @@ const Book = ({book}) => {
 				    <div className="col s12 m7 l6">
 				      <div className="card">
 				        <div className="card-image">
-				          <img src={books.image} />
+				          <img src={books.image} alt='' />
 				        </div>
 				        <div className="card-content">
 				          <span className="card-title">{ books.title }</span>

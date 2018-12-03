@@ -24,10 +24,13 @@ class SignUp extends Component{
 			password: ''			
 		})
 
-		this.props.signedUpUser === {} ? null : this.props.history.push('/SignIn')
+		this.props.history.push('/SignIn')
 	}
 
 	render(){
+
+		console.log(this.props.token)
+
 		if(this.props.token) { return <Redirect to='/' /> }
 
 		return (

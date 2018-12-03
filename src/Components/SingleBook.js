@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import getJwt from '../helpers/index'
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 
@@ -25,15 +24,11 @@ class SingleBook extends Component {
 
 	render(){
 
-		const jwt = getJwt()
-
-		console.log(this.props.token)
-
 		if(!this.props.token){ return <Redirect to='/SignIn' /> }
 
 		if(this.state.aboutBook === ''){
 			return(
-				<div className="center"> <h3> Fetching book... 📚</h3> </div>
+				<div className="center"> <h3> Fetching book... <span role="img">📚</span></h3> </div>
 			)
 		}
 
@@ -43,7 +38,7 @@ class SingleBook extends Component {
 					<div className="col s12 m6 l9">
 						<div className="card" style={{ 'marginLeft': '300px',  'marginTop': '50px'}}>
 							<div className="card-image">
-								<img src={this.state.aboutBook.image } />
+								<img src={this.state.aboutBook.image } alt='' />
 								<span className="card-title" style={{ 'color':'black', 'marginBottom':'-45px' }} >{this.state.aboutBook.title }</span>
 								<a className="btn-floating halfway-fab waves-effect waves-light red darken-3"><i className="material-icons">add</i></a>
 							</div>
