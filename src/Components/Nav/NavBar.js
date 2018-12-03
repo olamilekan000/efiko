@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SignInLink from './SignInLink';
 import SignOutLink from './SignOutLink';
-import getJwt from '../../helpers/index'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 
@@ -15,7 +14,7 @@ class Navbar extends Component {
 			    	<div className="container">
 				      <Link to="/" className="brand-logo center">Efiko - Where all IT books live.</Link>
 				      <ul>
-				      	{ getJwt() ? <SignInLink /> : <SignOutLink /> }
+				      	{ this.props.auth ? <SignInLink /> : <SignOutLink /> }
 				      </ul>
 			    	</div>
 			    </div>
@@ -27,7 +26,7 @@ class Navbar extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		auth: state.signIn.sigInData
+		auth: state.jwt.jwtToken
 	}
 }
 

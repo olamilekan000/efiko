@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 import signinUser from '../store/actions/signinUser'
+import getJwtToken from '../store/actions/jwtToken'
 import getJwt from '../helpers/index'
 
 class SignIn extends Component{
 	state ={
 		email: null,
-		password: null,
-		jwt: getJwt()
+		password: null
 	}
 
 	handleChange = e => {
@@ -17,16 +17,24 @@ class SignIn extends Component{
 		})
 	}
 
-	signIn = e => {
+	signIn =  e => {
 		e.preventDefault();
+
 		this.props.SignInUser(this.state)
-		this.props.SignInData !== this.state.jwt ? this.props.history.push('/') : null
+		this.props.getToken(this.props.SignInData)
+
+		// if(this.props.token){ 
+			// window.location.reload()
+			// this.props.history.push('/')
+		//  }
+
+		 console.log(this.props.token)
+		// this.props.SignInData !== this.state.jwt ? this.props.history.push('/') : null
 	}
 
 	render(){
-
-		if(this.state.jwt) { return <Redirect to='/' /> }
-
+		console.log(this.props)
+		if(this.props.token) { return <Redirect to='/' /> }
 		return (
 			<div>
 				<div className="container">
@@ -63,13 +71,16 @@ class SignIn extends Component{
 const mapDispatchToProps = (dispatch) => {
 	
 	return{
-		SignInUser: (userData) => { dispatch( signinUser(userData) ) }
+		SignInUser: (userData) => { dispatch( signinUser(userData) ) },
+		getToken: (token) => { dispatch( getJwtToken(token) ) }
 	}
 }
 
 const mapStateToProps = (state) => {
 	return {
-		SignInData: state.signIn.sigInData
+		SignInData: state.signIn.sigInData,
+		token: state.jwt.jwtToken,
+		seeState: state
 	}
 }
 

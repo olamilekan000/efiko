@@ -40,7 +40,7 @@ module.exports = {
 			let authToken = token(savedUser);
 			return res.json({ "message": "You have been succesfully saved", "password": newUser.password, "token": authToken, savedUser });		
 
-		}catch(err){
+		}catch(error){
 			return res.json({ error })
 		}
 	},

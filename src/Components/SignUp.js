@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import signupUser from '../store/actions/signupUser'
 import { Redirect } from 'react-router-dom'
-import getJwt from '../helpers/index'
 
 class SignUp extends Component{
 	state ={
 		email: '',
-		password: '',
-		jwt: getJwt()
+		password: ''
 	}
 
 	handleChange = e => {
@@ -30,8 +28,7 @@ class SignUp extends Component{
 	}
 
 	render(){
-		console.log(this.state.jwt)
-		if(this.state.jwt) { return <Redirect to='/' /> }
+		if(this.props.token) { return <Redirect to='/' /> }
 
 		return (
 			<div>
@@ -76,7 +73,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
 	return {
-		signedUpUser:  state.signUp.signUpUserData
+		signedUpUser:  state.signUp.signUpUserData,
+		token: state.jwt.jwtToken
 	}
 }
 

@@ -6,6 +6,7 @@ import SignIn from './Components/SignIn'
 import SignUp from './Components/SignUp'
 import AllBooks from './Components/allBooks'
 import SingleBook from './Components/SingleBook'
+import Dashboard from './Components/Dashboard'
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
               <Route path='/SignUp' component={ SignUp } />
               <Route exact path='/' component={ AllBooks } />
               <Route path='/:id' component={ SingleBook } />
+              <Route path='/Dashboard' component = { Dashboard } />
             </Switch>            
           </div>
         </BrowserRouter>

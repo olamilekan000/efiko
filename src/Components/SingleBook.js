@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import getJwt from '../helpers/index'
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 class SingleBook extends Component {
 
@@ -12,7 +13,7 @@ class SingleBook extends Component {
 
 	async componentDidMount(){
 
-		if(getJwt()){
+		if(this.props.token){
 
 			let res = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/books/${this.props.match.params.id}`);
 			this.setState({
@@ -26,9 +27,9 @@ class SingleBook extends Component {
 
 		const jwt = getJwt()
 
-		console.log(jwt)
+		console.log(this.props.token)
 
-		if(!jwt){ return <Redirect to='/SignIn' /> }
+		if(!this.props.token){ return <Redirect to='/SignIn' /> }
 
 		if(this.state.aboutBook === ''){
 			return(
@@ -65,4 +66,11 @@ class SingleBook extends Component {
 
 }
 
-export default SingleBook
+
+const mapStateToProps = (state) => {
+	return {
+		token: state.jwt.jwtToken
+	}
+}
+
+export default connect(mapStateToProps)(SingleBook)
