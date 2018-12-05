@@ -8,15 +8,15 @@ const jwtReducer = (state = initState, action) => {
 
 	let { token } = action
 
-	if( action.type === 'GET_TOKEN'){
-		return {
-			...state,
-			jwtToken: token
-		}
+	switch (action.type) {
 
-		// console.log('getting token...')
-	}
-	return state
+		case "GET_TOKEN":
+			console.log('GETTIN stoken')
+			console.log(token)
+			return { ...state, jwtToken: token }
+		default:
+	 		return state
+	}		
 }
 
 export default jwtReducer

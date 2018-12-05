@@ -18,7 +18,7 @@ const Book = ({book}) => {
 				          <p>{ books.price} </p>
 				        </div>
 				        <div className="card-action">
-				          <Link to={`/${books.isbn13}`} ><button className='btn red darken-3 '>View</button></Link>
+				          <Link to={`/Books/${books.isbn13}`} ><button className='btn red darken-3 '>View</button></Link>
 				        </div>
 				      </div>
 				    </div>

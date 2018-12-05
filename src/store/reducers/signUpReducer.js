@@ -1,5 +1,5 @@
 let initState = {
-	signUpUserData: {}
+	signUpUserData: null
 }
 
 const signUpReducer = (state = initState, action) => {

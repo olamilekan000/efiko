@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 
-class Dasboard extends Component{
+class Dashboard extends Component{
 	render(){
 		if(!this.props.token) { return <Redirect to='/SignIn' /> }
 		return (
@@ -19,4 +19,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(Dasboard)
+export default connect(mapStateToProps)(Dashboard)

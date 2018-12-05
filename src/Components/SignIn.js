@@ -20,8 +20,17 @@ class SignIn extends Component{
 		e.preventDefault();
 
 		this.props.SignInUser(this.state)
-		this.props.getToken(this.props.SignInData)
+		this.props.history.push('/')
+
 	}
+
+	componentDidUpdate(prevProps) {
+		// Typical usage (don't forget to compare props):
+		if (this.props.SignInData !== prevProps.SignInData) {
+			this.props.getToken(this.props.SignInData)
+		}
+	}
+
 
 	render(){
 		console.log(this.props)
@@ -47,7 +56,7 @@ class SignIn extends Component{
 						      	</div>
 								<div className="row">
 							        <div className="col s12">
-										<button className="btn red darken-3">Sign - In</button>
+									<a><button className="btn red darken-3">Sign - In</button></a>
 							        </div>
 						      	</div>						      	
 							</form>

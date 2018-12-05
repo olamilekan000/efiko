@@ -1,5 +1,5 @@
 let initState = {
-	sigInData: {}
+	sigInData: null
 }
 
 const SignInReducer = (state = initState, action) => {

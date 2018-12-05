@@ -30,6 +30,7 @@ class AllBooks extends Component{
 	}
 
 	render(){
+		console.log(this.props.token)
 
 		if(!this.props.token) { return <Redirect to='/SignIn' /> }
 
