@@ -36,6 +36,8 @@ module.exports = {
 
 			let savedUser = await newUser.save()
 
+			console.log('saved user: ', savedUser)
+
 			// exchanges a user for a token
 			let authToken = token(savedUser);
 			return res.json({ "message": "You have been succesfully saved", "password": newUser.password, "token": authToken, savedUser });		
@@ -45,11 +47,11 @@ module.exports = {
 		}
 	},
 	logIn: (req, res) => {
-		console.log(req.user)
+		// console.log(req.user)
 		try{
 
 			//exchange user dtails with a token
-			const user = req
+			const { user } = req
 			const tokenGen = token(user);
 			return res.json({ tokenGen })
 
@@ -59,9 +61,21 @@ module.exports = {
 
 	},
 	dashboard:  (req, res) => {
-		return res.json({ "message": "Dashboard"})
+		console.log(req.user.books)
+		let { user, books } = req
+
+		return res.json({ "message": "Dashboard", user, books })
 	},
 	saveBook:  (req, res) => {
-		return res.json({ "message": "Save Books"})
+		try{
+			console.log('user body data => ', req.body)		
+			req.user.books.push(req.body)
+			console.log('user book => ', req.user.books)
+
+			return res.json({ "message": "Save Books"})			
+
+		}catch(err){
+			res.json({ "error": "Couldn't save book"})
+		}
 	},	
 }

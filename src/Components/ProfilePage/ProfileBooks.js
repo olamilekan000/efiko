@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
+import getJwt from '../../helpers/index.js'
+import jsonwebtoken from 'jsonwebtoken'
 
 class ProfileBooks extends Component{
 	render(){
 		
+		let token = getJwt()
+		let decodedToken = jsonwebtoken.decode(token)
+		console.log(decodedToken)
+
 		return (
 			<div className="">
 				<div className='card'> 

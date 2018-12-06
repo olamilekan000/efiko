@@ -22,6 +22,28 @@ class SingleBook extends Component {
 
 	}
 
+	savedBook = async (e) =>{
+
+		let { token } = this.props || null
+		let config = {}
+
+		console.log(token) 		
+
+		if(token){
+
+			config = {
+				headers: { 'Authorization': `${token}` }
+			}
+
+			await axios.post('/saveBook', this.state.aboutBook, config)
+
+		}else{
+
+			throw  "No token saved!"
+		}
+
+	}
+
 	render(){
 
 		if(!this.props.token){ return <Redirect to='/SignIn' /> }
@@ -40,15 +62,14 @@ class SingleBook extends Component {
 							<div className="card-image">
 								<img src={this.state.aboutBook.image } alt='' />
 								<span className="card-title" style={{ 'color':'black', 'marginBottom':'-45px' }} >{this.state.aboutBook.title }</span>
-								<a className="btn-floating halfway-fab waves-effect waves-light red darken-3"><i className="material-icons">add</i></a>
+								<a className="btn-floating halfway-fab waves-effect waves-light red darken-3"><i className="material-icons" onClick={this.savedBook} >add</i></a>
 							</div>
 							<div className="card-content">
 								<p>About: {this.state.aboutBook.desc }</p>
 								<p>Author: {this.state.aboutBook.authors }</p>
-								<p>Price: {this.state.aboutBook.year }</p>
-								<p>Year: {this.state.aboutBook.price }</p>
+								<p>Year: {this.state.aboutBook.year }</p>
+								<p>Price: {this.state.aboutBook.price }</p>
 								<p>Rating: {this.state.aboutBook.rating }</p>
-								<p>Year: {this.state.aboutBook.price }</p>
 								<p>Subtitle: {this.state.aboutBook.subtitle }</p>
 							</div>
 						</div>
