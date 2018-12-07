@@ -36,6 +36,7 @@ class SingleBook extends Component {
 			}
 
 			await axios.post('/saveBook', this.state.aboutBook, config)
+			this.props.history.push('/Profile')
 
 		}else{
 

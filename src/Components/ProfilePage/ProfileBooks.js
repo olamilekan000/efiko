@@ -5,23 +5,41 @@ import getJwt from '../../helpers/index.js'
 import jsonwebtoken from 'jsonwebtoken'
 
 class ProfileBooks extends Component{
+	
 	render(){
-		
-		let token = getJwt()
-		let decodedToken = jsonwebtoken.decode(token)
-		console.log(decodedToken)
+
+		let { userBooks } = this.props
+
+		let books
+
+		if(userBooks){
+
+			books = userBooks.map( book => {
+				return (
+					<div className='card' key={ book._id } >
+						<div className='card-content'>
+							<div className="card-image">
+								<img src={ book.image } alt='' />
+								<span className="card-title" style={{ 'color':'black', 'marginBottom':'-45px' }} >{ book.title }</span>
+							</div>
+							<div className="card-content">
+								<p>About: { book.desc }</p>
+								<p>Author: { book.authors }</p>
+							</div>					
+							<div>
+								<button className='btn red darken-3'> DELETE </button>
+							</div>				
+						</div>
+					</div>
+				)
+			})
+		}else{
+			books = <div> getting your books</div>
+		}
 
 		return (
 			<div className="">
-				<div className='card'> 
-					<div className='card-content'>
-						blaofofioiroigforrg0igg0grrg
-						olejigfoirorioriogiorgir]ojgriorg[\
-						orjg[ojgogrjgorjgor\
-						ojgrojrgojrgorggr]]\
-						g;igjriojgroijgogorioiroigoig						
-					</div>					
-				</div>
+				{ books }
 			</div>
 		)
 	}

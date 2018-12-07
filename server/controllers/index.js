@@ -61,16 +61,26 @@ module.exports = {
 
 	},
 	dashboard:  (req, res) => {
-		console.log(req.user.books)
-		let { user, books } = req
-
-		return res.json({ "message": "Dashboard", user, books })
-	},
-	saveBook:  (req, res) => {
 		try{
-			console.log('user body data => ', req.body)		
-			req.user.books.push(req.body)
-			console.log('user book => ', req.user.books)
+
+			console.log(req.user.books)
+			let { user, books } = req
+
+			return res.json({ "message": "Dashboard", user, books })
+
+		}catch(error){
+			res.json({ "error": "Couldn't save book"})
+		}
+	},
+	saveBook: async (req, res) => {
+		try{
+
+			await UserModel.findOneAndUpdate(
+			   { _id: req.user._id }, 
+			   { $push: {
+			   			books: req.body
+			   		}
+			   })			
 
 			return res.json({ "message": "Save Books"})			
 
