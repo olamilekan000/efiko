@@ -4,7 +4,7 @@
   "description": "a book app",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register",
+    "test": "mocha --require @babel/register",
     "start": "nodemon --exec babel-node boot.js"
   },
   "repository": {
@@ -17,9 +17,6 @@
   "author": "ola",
   "license": "ISC",
   "dependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
@@ -38,10 +35,10 @@
     "supertest": "^3.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.6",
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
     "@babel/node": "^7.0.0",
-    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-env": "^7.2.0",
     "@babel/register": "^7.0.0"
   }
 }

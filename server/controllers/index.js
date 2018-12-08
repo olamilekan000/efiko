@@ -63,7 +63,6 @@ module.exports = {
 	dashboard:  (req, res) => {
 		try{
 
-			console.log(req.user.books)
 			let { user, books } = req
 
 			return res.json({ "message": "Dashboard", user, books })
@@ -87,5 +86,18 @@ module.exports = {
 		}catch(err){
 			res.json({ "error": "Couldn't save book"})
 		}
-	},	
+	},
+	deleteBook: async (req, res) => {
+		try{
+
+			await UserModel.updateOne(
+			  { },
+			  { $pull: { books: { _id: req.body._id } } },
+			  { multi: true }
+			)				
+
+		}catch(err){
+			res.json({ "error": "Couldn't delete book"})
+		}
+	}
 }

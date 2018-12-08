@@ -12,6 +12,9 @@ router.route('/dashboard')
 	.get(passport.authenticate('jwt', { session: false }), controllers.dashboard);
 
 router.route('/saveBook')
-	.post(passport.authenticate('jwt', { session: false }), controllers.saveBook);	
+	.post(passport.authenticate('jwt', { session: false }), controllers.saveBook);
+
+router.route('/delete')
+	.post(passport.authenticate('jwt', { session: false }), controllers.deleteBook);	
 
 module.exports = router
