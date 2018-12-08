@@ -27,8 +27,6 @@ class SingleBook extends Component {
 		let { token } = this.props || null
 		let config = {}
 
-		console.log(token) 		
-
 		if(token){
 
 			config = {

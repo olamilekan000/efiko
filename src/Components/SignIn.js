@@ -5,7 +5,7 @@ import signinUser from '../store/actions/signinUser'
 import getJwtToken from '../store/actions/jwtToken'
 
 class SignIn extends Component{
-	state ={
+	state = {
 		email: null,
 		password: null
 	}

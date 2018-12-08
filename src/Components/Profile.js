@@ -55,7 +55,7 @@ class Profile extends Component{
 			<div className="container">
 				<div className='row'> 
 					<div className='col l4'>
-						<NameCard user={ this.state.user } />
+						<NameCard user={ this.state.email } />
 					</div>
 					<div className='col l7'>
 						<ProfileBooks userBooks={ this.state.userBooks } />

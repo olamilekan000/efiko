@@ -10,7 +10,7 @@ class NameCard extends Component{
 			<div className="">
 				<div className='card'> 
 					<div className='card-content'>
-						<h4>Welcome: { this.props.user } </h4>
+						<h5>Welcome: { this.props.user } </h5>
 					</div>					
 				</div>
 			</div>
